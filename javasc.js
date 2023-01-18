@@ -79,15 +79,21 @@ function game(choice) {
 
     }
     console.log(`Player has ${playerWins} wins so far, while opponent has ${opponentWins} wins so far.`)
-    if (roundsPlayed ==5) {
-        console.log(`Player won a total of ${playerWins} times, while opponent won a total of ${opponentWins} times.`)
+    if (playerWins ==5 || opponentWins == 5) {
+        if (playerWins == 5) {
+           console.log("Player reached 5 playerWins. Player wins!");
+            winnerText.textContent = "Player was the first to reach 5 wins first! Congratulations!"
+        }
+        if (opponentWins == 5) {
+            console.log("Opponent reached 5 playerWins. Player wins!");
+             winnerText.textContent = "Opponent was the first to reach 5 wins first! Better luck next time!"
+         }
+            console.log(`Player won a total of ${playerWins} times, while opponent won a total of ${opponentWins} times.`)
         playerWins = 0;
         opponentWins = 0;
         roundsPlayed = 0;
         playerScore.textContent = `Player score: ${playerWins}`;
         opponentScore.textContent = `Opponent score: ${opponentWins}`;
-        console.log("This 5-round game has ended. Time to start over")
-
     }
 }
 //}
@@ -117,6 +123,8 @@ let opponentScore = document.createElement('p');
 opponentScore.textContent = `Opponent score: ${opponentWins}`;
 container.appendChild(playerScore);
 container.appendChild(opponentScore);
+winnerText = document.createElement('p');
+container.appendChild(winnerText);
 
 
 
